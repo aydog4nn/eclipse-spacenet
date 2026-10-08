@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hesabınız Hazır</title>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #101828 !important;
+                color: #e5e7eb !important;
+            }
+
+            .container {
+                background-color: #111827 !important;
+                color: #e5e7eb !important;
+            }
+
+            .button {
+                background-color: #dc2626 !important;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 100% !important;
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin:0; padding:0; font-family: Arial, sans-serif; background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);">
+<table align="center" width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <table align="center" cellpadding="0" cellspacing="0" width="600" class="container"
+                   style="background-color: #ffffff; border-radius: 20px; padding: 36px; box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);">
+                <tr>
+                    <td>
+                        <div style="text-align: center; margin-bottom: 18px;">
+                            <span style="display: inline-block; border: 1px solid rgba(220, 38, 38, 0.22); background-color: rgba(220, 38, 38, 0.08); color: #dc2626; border-radius: 999px; padding: 8px 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;">
+                                Hesabınız Hazır
+                            </span>
+                        </div>
+                        <h1 style="margin: 0; color: #0f172a; text-align: center; font-size: 30px; line-height: 1.3;">
+                            Merhaba <span th:text="${userName}">Kullanici</span>,
+                        </h1>
+                        <p style="margin-top: 18px; color: #475467; font-size: 16px; line-height: 1.8;">
+                            Platform hesabınız oluşturuldu. Artık sizinle paylaşılan bilgilerle giriş yapabilir ve size açık alanları kullanmaya başlayabilirsiniz.
+                        </p>
+                        <p style="margin-top: 14px; color: #475467; font-size: 16px; line-height: 1.8;">
+                            Ilk girişten sonra şifrenizi güvenli bir sekilde güncellemenizi öneririz. Giriş yapmak icin aşagıdaki butonu kullanabilirsiniz.
+                        </p>
+                        <div style="text-align: center; margin-top: 32px;">
+                            <a th:href="${loginUrl}" href="http://localhost:5173/login" class="button"
+                               style="display: inline-block; background-color: #dc2626; color: white; padding: 14px 28px; border-radius: 999px; text-decoration: none; font-weight: 700;">
+                                Giris Sayfasina Git
+                            </a>
+                        </div>
+                        <div style="margin-top: 32px; border-radius: 16px; background-color: #f8fafc; padding: 18px 20px;">
+                            <p style="margin: 0; color: #334155; font-size: 14px; line-height: 1.7;">
+                                Eger bu maili beklemiyorsaniz veya hesabın size ait olmadığını düşünuyorsanız bu mesajı dikkate almayabilirsiniz.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,98 @@
+spring:
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URL}
+  servlet:
+    multipart:
+      max-file-size: ${MULTIPART_MAX_FILE_SIZE:20MB}
+      max-request-size: ${MULTIPART_MAX_REQUEST_SIZE:20MB}
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          time_zone: UTC
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      timeout: 6000
+      database: 0
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+jwt:
+  secret-key: ${JWT_SECRET_KEY}
+  access-token-expiration: 900000
+  refresh-token-expiration: 604800000
+  csrf-token-expiration: 604800000
+
+app:
+  admin:
+    ip-restriction-enabled: false
+    allowed-ips:
+      - 127.0.0.1
+      - 0:0:0:0:0:0:0:1
+    trusted-proxies:
+      - 127.0.0.1
+      - 0:0:0:0:0:0:0:1
+  verification:
+    token-length: 6
+    token-expiration-minutes: 15
+  ratelimit:
+    reset-password:
+      limit-for-period: 3
+      limit-refresh-period: PT24H    # 1 gün
+    general:
+      limit-for-period: 50
+      limit-refresh-period: PT1M    # 1 dakika
+    contact:
+      limit-for-period: ${CONTACT_RATE_LIMIT:10}
+      limit-refresh-period: ${CONTACT_RATE_PERIOD:PT24H}
+  auth:
+    login-attempt:
+      max-attempts: 3
+      block-duration-minutes: 15
+  frontend:
+    url: ${FRONTEND_URL}
+  contact:
+    inbox-email: ${CONTACT_INBOX_EMAIL:}
+  bootstrap:
+    admin:
+      enabled: ${BOOTSTRAP_ADMIN_ENABLED:false}
+      email: ${BOOTSTRAP_ADMIN_EMAIL:}
+      password: ${BOOTSTRAP_ADMIN_PASSWORD:}
+      name: ${BOOTSTRAP_ADMIN_NAME:}
+      surname: ${BOOTSTRAP_ADMIN_SURNAME:}
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

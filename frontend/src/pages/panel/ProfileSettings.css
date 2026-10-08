@@ -1,0 +1,60 @@
+.profile-settings-page {
+  animation: fadeIn 0.5s ease;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.settings-card {
+  padding: 2rem;
+}
+
+.settings-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--color-cyan);
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.settings-card label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.phone-input {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 52px;
+  padding: 0 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+}
+
+.phone-prefix {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.phone-input input {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,111 @@
+.admin-capabilities-page {
+  animation: fadeIn 0.5s ease;
+}
+
+.capability-form-card {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 210, 255, 0.2);
+}
+
+.form-title {
+  font-size: 1.1rem;
+  color: var(--color-cyan);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.admin-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.cap-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.cap-list-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 210, 255, 0.3);
+}
+
+.cap-info {
+  flex: 1;
+}
+
+.cap-cat-badge {
+  font-size: 0.65rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: var(--color-text-muted);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.cap-name {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.cap-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.cap-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.cap-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--color-text-muted);
+}
+
+.cap-btn.edit:hover {
+  background: rgba(0, 210, 255, 0.1);
+  color: var(--color-cyan);
+  border-color: var(--color-cyan);
+}
+
+.cap-btn.delete:hover {
+  background: rgba(255, 77, 77, 0.1);
+  color: #ff4d4d;
+  border-color: #ff4d4d;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}

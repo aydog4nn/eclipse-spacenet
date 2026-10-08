@@ -1,0 +1,190 @@
+.login-page {
+  padding-top: 8rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 2rem;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.login-desc {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+.form-group input {
+  min-height: 52px;
+}
+
+.login-form .form-group input::placeholder,
+.login-form .password-field input::placeholder {
+  color: rgba(17, 17, 17, 0.22) !important;
+  -webkit-text-fill-color: rgba(17, 17, 17, 0.22) !important;
+  opacity: 1;
+}
+
+:root[data-theme='dark'] .login-form .form-group input::placeholder,
+:root[data-theme='dark'] .login-form .password-field input::placeholder {
+  color: rgba(240, 242, 248, 0.4) !important;
+  -webkit-text-fill-color: rgba(240, 242, 248, 0.4) !important;
+  opacity: 1;
+}
+
+.form-group input:focus {
+  border-color: rgba(31, 214, 212, 0.7);
+}
+
+:root:not([data-theme='dark']) .login-form .form-group input,
+:root:not([data-theme='dark']) .login-form .password-field {
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+:root:not([data-theme='dark']) .login-form .form-group input:hover,
+:root:not([data-theme='dark']) .login-form .password-field:hover {
+  border-color: rgba(15, 23, 42, 0.24);
+}
+
+:root:not([data-theme='dark']) .login-form .form-group input:focus,
+:root:not([data-theme='dark']) .login-form .password-field:focus-within {
+  border-color: rgba(247, 61, 76, 0.45);
+  box-shadow:
+    0 0 0 4px rgba(247, 61, 76, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+:root:not([data-theme='dark']) .login-form .password-field {
+  border-radius: 14px;
+}
+
+:root:not([data-theme='dark']) .login-form .password-field input {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.form-helper {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.login-support-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.9rem 1.2rem;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+}
+
+.remember-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--color-text-main);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.remember-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.remember-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-strong);
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.remember-toggle input:checked + .remember-check {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 18px rgba(247, 61, 76, 0.2);
+}
+
+.remember-toggle input:checked + .remember-check::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.support-link-copy {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  text-align: right;
+  line-height: 1.45;
+}
+
+.support-link-copy a {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+:root:not([data-theme='dark']) .login-support-row {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme='dark'] .login-support-row {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 560px) {
+  .login-support-row {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  .support-link-copy {
+    text-align: left;
+  }
+}

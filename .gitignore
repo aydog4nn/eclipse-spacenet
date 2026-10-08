@@ -1,0 +1,36 @@
+# Build and local workspace files
+**/target/
+**/node_modules/
+**/dist/
+**/dist-ssr/
+**/build/
+.idea/
+**/.idea/
+.vscode/
+.DS_Store
+**/.DS_Store
+*.log
+logs/
+__pycache__/
+# Secrets, certificates, local accounts and runtime data
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+*.local
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.dump
+*.sql
+*.sqlite*
+*.zip
+**/uploads/
+.aws/
+.codex/
+.agents/

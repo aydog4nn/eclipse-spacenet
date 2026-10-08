@@ -1,0 +1,77 @@
+.about-page {
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  text-align: center;
+}
+
+.about-hero {
+  max-width: 900px;
+  margin: 0 auto 5rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.about-item {
+  padding: 3rem 2rem;
+  transition: transform 0.3s ease;
+}
+
+.about-item:hover {
+  transform: translateY(-10px);
+}
+
+.about-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-main);
+}
+
+.about-item p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.heritage-section {
+  padding: 4rem 2rem;
+  background-image: radial-gradient(circle at center, rgba(235, 7, 7, 0.1) 0%, transparent 70%);
+  border-radius: var(--radius-lg);
+}
+
+.heritage-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem;
+  text-align: left;
+}
+
+.heritage-content h3 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-main);
+  background: linear-gradient(135deg, var(--color-text-main) 0%, var(--color-text-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+:root:not([data-theme='dark']) .heritage-content h3 {
+  background: none;
+  color: var(--color-text-main);
+  -webkit-text-fill-color: initial;
+}
+
+.heritage-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}

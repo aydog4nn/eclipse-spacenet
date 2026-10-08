@@ -1,0 +1,21 @@
+spring:
+  jackson:
+    use-jackson2-defaults: true
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  config:
+    import: optional:file:.env[.properties]
+
+app:
+  ai:
+    gemini:
+      api-url: ${GEMINI_API_URL:https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent}
+      api-key: ${GEMINI_API_KEY:}
+      model: ${GEMINI_MODEL:gemini-2.5-flash}
+  ratelimit:
+    key-prefix: "ratelimit:"
+    paths:
+      login: /api/v1/auth/login
+      forgot-password: /api/v1/auth/forgot-password
+      reset-password: /api/v1/auth/reset-password
+      contact: /api/v1/public/contact

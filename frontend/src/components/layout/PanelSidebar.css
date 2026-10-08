@@ -1,0 +1,4 @@
+.panel-sidebar {
+  /* Inherits glass and layout from PanelLayout.css mostly */
+  background: var(--color-bg-card);
+}

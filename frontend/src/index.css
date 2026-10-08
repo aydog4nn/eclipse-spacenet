@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --color-bg-base: #f7f7f4;
+  --color-bg-card: rgba(255, 255, 255, 0.76);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.96);
+  --color-panel: rgba(248, 248, 245, 0.94);
+  --color-surface-strong: #ffffff;
+  --color-hover-soft: rgba(15, 23, 42, 0.06);
+
+  --color-text-main: #111111;
+  --color-text-muted: #5f6368;
+
+  --color-primary: #f73d4c;
+  --color-primary-hover: #e02a39;
+  --color-accent: #2e7ee6;
+  --color-cyan: #1fd6d4;
+  
+  --color-border: rgba(15, 23, 42, 0.12);
+  --color-border-hover: rgba(15, 23, 42, 0.22);
+  --color-border-primary: rgba(247, 61, 76, 0.3);
+
+  --shadow-glass: 0 12px 40px 0 rgba(15, 23, 42, 0.08);
+  --blur-glass: blur(12px);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+}
+
+:root[data-theme='dark'] {
+  --color-bg-base: #0a0d17;
+  --color-bg-card: rgba(18, 22, 40, 0.6);
+  --color-bg-card-hover: rgba(25, 30, 50, 0.8);
+  --color-panel: rgba(13, 16, 28, 0.85);
+  --color-surface-strong: #121628;
+  --color-hover-soft: rgba(255, 255, 255, 0.1);
+
+  --color-text-main: #f0f2f8;
+  --color-text-muted: #9ba0b5;
+
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.15);
+
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at top center, rgba(247, 61, 76, 0.08) 0%, transparent 28%),
+    radial-gradient(circle at bottom left, rgba(31, 214, 212, 0.08) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(247, 247, 244, 0.94));
+  background-attachment: fixed;
+}
+
+:root[data-theme='dark'] body {
+  background-image:
+    radial-gradient(circle at top center, rgba(30, 45, 90, 0.2) 0%, var(--color-bg-base) 60%),
+    radial-gradient(circle at bottom left, rgba(23, 27, 45, 0.4) 0%, transparent 40%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.76)),
+    rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 14px;
+  padding: 0.95rem 1rem;
+  color: var(--color-text-main);
+  font-family: var(--font-main);
+  font-size: 0.96rem;
+  line-height: 1.4;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+  appearance: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(17, 17, 17, 0.28);
+}
+
+:root:not([data-theme='dark']) input,
+:root:not([data-theme='dark']) textarea,
+:root:not([data-theme='dark']) select {
+  color: var(--color-text-main);
+  -webkit-text-fill-color: var(--color-text-main);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: rgba(15, 23, 42, 0.18);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(31, 214, 212, 0.7);
+  box-shadow: 0 0 0 4px rgba(31, 214, 212, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.86)),
+    rgba(255, 255, 255, 0.92);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(17, 17, 17, 0.55) 50%),
+    linear-gradient(135deg, rgba(17, 17, 17, 0.55) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% - 3px),
+    calc(100% - 12px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.75rem;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: var(--color-bg-card);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-glass);
+  border-radius: var(--radius-md);
+}
+
+.glass-panel {
+  background: var(--color-panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 1px solid var(--color-border);
+}
+
+/* Typography Utilities */
+.text-gradient {
+  background: linear-gradient(90deg, #111111, #6b7280);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+:root[data-theme='dark'] input,
+:root[data-theme='dark'] textarea,
+:root[data-theme='dark'] select {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
+    rgba(8, 12, 24, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  -webkit-text-fill-color: var(--color-text-main);
+}
+
+:root[data-theme='dark'] input::placeholder,
+:root[data-theme='dark'] textarea::placeholder {
+  color: rgba(240, 242, 248, 0.42);
+}
+
+:root[data-theme='dark'] input:hover,
+:root[data-theme='dark'] textarea:hover,
+:root[data-theme='dark'] select:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+:root[data-theme='dark'] input:focus,
+:root[data-theme='dark'] textarea:focus,
+:root[data-theme='dark'] select:focus {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04)),
+    rgba(10, 15, 28, 0.92);
+}
+
+:root[data-theme='dark'] select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(240, 242, 248, 0.7) 50%),
+    linear-gradient(135deg, rgba(240, 242, 248, 0.7) 50%, transparent 50%);
+}
+
+:root[data-theme='dark'] .text-gradient {
+  background: linear-gradient(90deg, #ffffff, #9ba0b5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+:root:not([data-theme='dark']) .text-white,
+:root:not([data-theme='dark']) .project-title,
+:root:not([data-theme='dark']) .supplier-name,
+:root:not([data-theme='dark']) .org-name-title,
+:root:not([data-theme='dark']) .featured-org-name,
+:root:not([data-theme='dark']) .org-name-link,
+:root:not([data-theme='dark']) .login-title,
+:root:not([data-theme='dark']) .register-title,
+:root:not([data-theme='dark']) .modal-title,
+:root:not([data-theme='dark']) .detail-header h3,
+:root:not([data-theme='dark']) .panel-title,
+:root:not([data-theme='dark']) .sidebar-title,
+:root:not([data-theme='dark']) .app-project-name,
+:root:not([data-theme='dark']) .budget-val,
+:root:not([data-theme='dark']) .org-info h3,
+:root:not([data-theme='dark']) .about-item h3,
+:root:not([data-theme='dark']) .heritage-content h3 {
+  color: var(--color-text-main) !important;
+}
+
+:root:not([data-theme='dark']) .hero-desc,
+:root:not([data-theme='dark']) .section-desc,
+:root:not([data-theme='dark']) .supplier-desc,
+:root:not([data-theme='dark']) .org-description,
+:root:not([data-theme='dark']) .app-org-name,
+:root:not([data-theme='dark']) .sidebar-subtitle,
+:root:not([data-theme='dark']) .modal-subtitle,
+:root:not([data-theme='dark']) .empty-text,
+:root:not([data-theme='dark']) .org-location-row,
+:root:not([data-theme='dark']) .featured-org-meta,
+:root:not([data-theme='dark']) .filter-summary,
+:root:not([data-theme='dark']) .panel-subtitle {
+  color: var(--color-text-muted) !important;
+}
+
+:root:not([data-theme='dark']) .chatbot-launcher,
+:root:not([data-theme='dark']) .chatbot-window,
+:root:not([data-theme='dark']) .chatbot-header,
+:root:not([data-theme='dark']) .chatbot-input,
+:root:not([data-theme='dark']) .bot .message-bubble,
+:root:not([data-theme='dark']) .chatbot-input input,
+:root:not([data-theme='dark']) .org-controls,
+:root:not([data-theme='dark']) .projects-controls,
+:root:not([data-theme='dark']) .filter-bar {
+  background: var(--color-bg-card) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text-main) !important;
+}
+
+:root:not([data-theme='dark']) .launcher-text,
+:root:not([data-theme='dark']) .bot-info h4,
+:root:not([data-theme='dark']) .chatbot-input input,
+:root:not([data-theme='dark']) .chatbot-input input::placeholder,
+:root:not([data-theme='dark']) .header-actions button,
+:root:not([data-theme='dark']) .toast-title,
+:root:not([data-theme='dark']) .toast-close,
+:root:not([data-theme='dark']) .stat-value,
+:root:not([data-theme='dark']) .module-title {
+  color: var(--color-text-main) !important;
+}
+
+:root:not([data-theme='dark']) .login-title,
+:root:not([data-theme='dark']) .register-title,
+:root:not([data-theme='dark']) .project-title,
+:root:not([data-theme='dark']) .supplier-name,
+:root:not([data-theme='dark']) .featured-org-name,
+:root:not([data-theme='dark']) .org-name-title,
+:root:not([data-theme='dark']) .org-name-link,
+:root:not([data-theme='dark']) .about-item h3,
+:root:not([data-theme='dark']) .heritage-content h3,
+:root:not([data-theme='dark']) .stats-card h3,
+:root:not([data-theme='dark']) .references-card h3,
+:root:not([data-theme='dark']) .org-name-val,
+:root:not([data-theme='dark']) .info-item span,
+:root:not([data-theme='dark']) .sidebar-stat span,
+:root:not([data-theme='dark']) .cap-tag-glow,
+:root:not([data-theme='dark']) .cert-card-mini,
+:root:not([data-theme='dark']) .project-detail-page h3,
+:root:not([data-theme='dark']) .detail-header h3,
+:root:not([data-theme='dark']) .toast-item,
+:root:not([data-theme='dark']) .toast-message,
+:root:not([data-theme='dark']) .panel-content h1,
+:root:not([data-theme='dark']) .panel-content h2,
+:root:not([data-theme='dark']) .panel-content h3,
+:root:not([data-theme='dark']) .panel-content th,
+:root:not([data-theme='dark']) .panel-content td,
+:root:not([data-theme='dark']) .role-btn,
+:root:not([data-theme='dark']) .form-helper,
+:root:not([data-theme='dark']) .org-filter-tab,
+:root:not([data-theme='dark']) .featured-chip,
+:root:not([data-theme='dark']) .ref-item,
+:root:not([data-theme='dark']) .cert-item,
+:root:not([data-theme='dark']) .status-badge.withdrawn {
+  color: var(--color-text-main) !important;
+}
+
+:root:not([data-theme='dark']) .register-desc,
+:root:not([data-theme='dark']) .auth-footer,
+:root:not([data-theme='dark']) .about-item p,
+:root:not([data-theme='dark']) .heritage-content p,
+:root:not([data-theme='dark']) .featured-org-description,
+:root:not([data-theme='dark']) .org-description,
+:root:not([data-theme='dark']) .description-section p,
+:root:not([data-theme='dark']) .cert-item,
+:root:not([data-theme='dark']) .ref-item,
+:root:not([data-theme='dark']) .org-search svg,
+:root:not([data-theme='dark']) .filter-field svg,
+:root:not([data-theme='dark']) .header-actions .icon-btn,
+:root:not([data-theme='dark']) .message-time,
+:root:not([data-theme='dark']) .toast-time,
+:root:not([data-theme='dark']) .toast-close,
+:root:not([data-theme='dark']) .hint-text {
+  color: var(--color-text-muted) !important;
+}
+
+:root:not([data-theme='dark']) .login-card,
+:root:not([data-theme='dark']) .register-card,
+:root:not([data-theme='dark']) .project-org-strip,
+:root:not([data-theme='dark']) .org-search,
+:root:not([data-theme='dark']) .featured-org-card,
+:root:not([data-theme='dark']) .featured-metrics div,
+:root:not([data-theme='dark']) .tag,
+:root:not([data-theme='dark']) .cap-tag,
+:root:not([data-theme='dark']) .cap-tag-glow,
+:root:not([data-theme='dark']) .cert-card-mini,
+:root:not([data-theme='dark']) .ref-item,
+:root:not([data-theme='dark']) .role-btn,
+:root:not([data-theme='dark']) .form-helper,
+:root:not([data-theme='dark']) .search-box,
+:root:not([data-theme='dark']) .org-filter-tab,
+:root:not([data-theme='dark']) .match-badge,
+:root:not([data-theme='dark']) .chatbot-input input,
+:root:not([data-theme='dark']) .bot .message-bubble,
+:root:not([data-theme='dark']) .toast-item,
+:root:not([data-theme='dark']) .capability-item,
+:root:not([data-theme='dark']) .status-badge.withdrawn {
+  background: var(--color-bg-card) !important;
+  border-color: var(--color-border) !important;
+}
+
+:root:not([data-theme='dark']) .featured-org-logo,
+:root:not([data-theme='dark']) .org-logo-large,
+:root:not([data-theme='dark']) .org-mini-logo {
+  color: #ffffff !important;
+}
+
+:root:not([data-theme='dark']) .chatbot-launcher:hover,
+:root:not([data-theme='dark']) .header-actions button:hover {
+  background: var(--color-hover-soft) !important;
+}
+
+:root:not([data-theme='dark']) .match-badge,
+:root:not([data-theme='dark']) .project-badge,
+:root:not([data-theme='dark']) .tag,
+:root:not([data-theme='dark']) .cap-tag,
+:root:not([data-theme='dark']) .cap-tag-glow,
+:root:not([data-theme='dark']) .cert-card-mini,
+:root:not([data-theme='dark']) .ref-item,
+:root:not([data-theme='dark']) .status-badge.withdrawn {
+  background: rgba(15, 23, 42, 0.05) !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  color: var(--color-text-main) !important;
+}
+
+.heading-xl {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Button variants */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(247, 61, 76, 0.25);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+}
+.btn-outline:hover {
+  border-color: var(--color-text-main);
+  background-color: var(--color-hover-soft);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text-muted);
+}
+.btn-ghost:hover {
+  color: var(--color-text-main);
+  background-color: var(--color-hover-soft);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
