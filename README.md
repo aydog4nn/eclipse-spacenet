@@ -280,8 +280,6 @@ Aşağıdaki tablolar temel API akışlarını gösterir. Kimlik doğrulama ve p
 - Proje sohbetine abonelikte proje erişimi doğrulanır.
 - Dosya erişiminde kimlik doğrulama ve dizin dışına çıkma kontrolleri uygulanır.
 
-Hackathon sırasında kullanılan anahtarlar ve parolalar bu depodan kaldırılmıştır. `.env.example` dosyalarında gizli değerler boş bırakılır; gerçek `.env` dosyaları, yüklenen dosyalar ve derleme çıktıları Git tarafından dışlanır. Temizleme ve kontrol kapsamı [SECURITY.md](SECURITY.md) dosyasında açıklanmıştır.
-
 ---
 
 ## Projeyi Yerel Ortamda Çalıştırma
